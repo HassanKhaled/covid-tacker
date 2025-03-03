@@ -1,6 +1,6 @@
 {
-  "name": "Temp Extensions",
-  "description": "Template Chrome Extension",
+  "name": "Covid-19 Tacker",
+  "description": "a simple application to monitor deaths and patients number around the world",
   "version": "1.0",
   "permissions": ["activeTab", "scripting"],
   "manifest_version": 3,
