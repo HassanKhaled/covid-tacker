@@ -33,18 +33,19 @@ chrome.action.onClicked.addListener(async (tab) => {
 });
 
 async function fetchData() {
-    // const res=await fetch ("https://api.coronavirus.data.gov.uk/v1/data");
-    // const record=await res.json();
-    // document.getElementById("date").innerHTML=record.data[0].date;
-    // document.getElementById("areaName").innerHTML=record.data[0].areaName;
-    // document.getElementById("latestBy").innerHTML=record.data[0].latestBy;
-    // document.getElementById("deathNew").innerHTML=record.data[0].deathNew;
+    const res = await fetch("https://covid-api.com/api/reports/total");
+    const record = await res.json();
+
+    document.getElementById("date").innerHTML = record.data.date;
+    document.getElementById("areaName").innerHTML = record.data.active;
+    document.getElementById("latestBy").innerHTML = record.data.deaths;
+    document.getElementById("deathNew").innerHTML = record.data.confirmed;
 
 
-    document.getElementById("date").innerHTML = "12-9-2025";
-    document.getElementById("areaName").innerHTML = "Egypt";
-    document.getElementById("latestBy").innerHTML = "202365";
-    document.getElementById("deathNew").innerHTML = "985";
+    // document.getElementById("date").innerHTML = "12-9-2025";
+    // document.getElementById("areaName").innerHTML = "Egypt";
+    // document.getElementById("latestBy").innerHTML = "202365";
+    // document.getElementById("deathNew").innerHTML = "985";
 
 }
 fetchData();
