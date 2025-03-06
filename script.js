@@ -36,10 +36,10 @@ async function fetchData() {
     const res = await fetch("https://covid-api.com/api/reports/total");
     const record = await res.json();
 
-    document.getElementById("date").innerHTML = record.data.date;
-    document.getElementById("areaName").innerHTML = record.data.active;
-    document.getElementById("latestBy").innerHTML = record.data.deaths;
-    document.getElementById("deathNew").innerHTML = record.data.confirmed;
+    document.getElementById("date").value = record.data.date;
+    document.getElementById("areaName").value = record.data.active;
+    document.getElementById("latestBy").value = record.data.deaths;
+    document.getElementById("deathNew").value = record.data.confirmed;
 
 
     // document.getElementById("date").innerHTML = "12-9-2025";
