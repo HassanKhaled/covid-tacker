@@ -33,12 +33,20 @@ chrome.action.onClicked.addListener(async (tab) => {
 });
 
 async function fetchData() {
-    const res = await fetch("https://covid-api.com/api/reports??date=2020-04-16&iso=EGY");
+    const date = new Date();
+    const month = (date.getMonth() + 1);
+    const day = date.getDate();
+
+    const res = await fetch(`https://covid-api.com/api/reports?date=2021-0${month}-0${day}&iso=EGY`);
+
     const record = await res.json();
+    console.log(record);
+
     const data = record.data[0];
     console.log(data.date);
 
     document.getElementById("country").innerHTML = data.region.name;
+
     document.getElementById("date").value = data.date;
     document.getElementById("active").value = data.active;
     document.getElementById("deathNew").value = data.deaths;
