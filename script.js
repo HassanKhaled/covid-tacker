@@ -1,17 +1,24 @@
 
+function getCurrentDate() {
+
+    const currentDate = new Date();
+
+    const month = new Intl.DateTimeFormat('en-US', { month: '2-digit' }).format(currentDate);
+    const day = new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(currentDate);
+
+    console.log(`Current Date: ${month}-${day}`);
+    return `${month}-${day}`
+}
 
 async function fetchData() {
     const date = new Date();
-    const month = (date.getMonth() + 1);
-    const day = date.getDate();
 
-    const res = await fetch(`https://covid-api.com/api/reports?date=2021-0${month}-0${day}&iso=EGY`);
+    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
     const record = await res.json();
-    console.log(record);
 
     const data = record.data[0];
-    console.log(data.date);
+
 
     document.getElementById("country").innerHTML = data.region.name;
 
