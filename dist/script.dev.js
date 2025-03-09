@@ -28,7 +28,7 @@ function fetchData() {
           res = _context.sent;
 
           if (!(res != null)) {
-            _context.next = 16;
+            _context.next = 17;
             break;
           }
 
@@ -39,13 +39,14 @@ function fetchData() {
         case 9:
           record = _context.sent;
           data = record.data[0];
+          console.log(data);
           document.getElementById("country").innerHTML = data.region.name;
           document.getElementById("date").value = data.date;
           document.getElementById("active").value = data.active;
           document.getElementById("deathNew").value = data.deaths;
           document.getElementById("confirmed").value = data.confirmed;
 
-        case 16:
+        case 17:
         case "end":
           return _context.stop();
       }
