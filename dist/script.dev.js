@@ -28,7 +28,7 @@ function fetchData() {
           res = _context.sent;
 
           if (!(res != null)) {
-            _context.next = 17;
+            _context.next = 20;
             break;
           }
 
@@ -43,10 +43,13 @@ function fetchData() {
           document.getElementById("country").innerHTML = data.region.name;
           document.getElementById("date").value = data.date;
           document.getElementById("active").value = data.active;
+          document.getElementById("active_diff").value = data.active_diff;
           document.getElementById("death").value = data.deaths;
+          document.getElementById("death_diff").value = data.deaths_diff;
           document.getElementById("confirmed").value = data.confirmed;
+          document.getElementById("confirmed_diff").value = data.confirmed_diff;
 
-        case 17:
+        case 20:
         case "end":
           return _context.stop();
       }
