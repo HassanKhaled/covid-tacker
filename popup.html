@@ -12,7 +12,7 @@
 
       html {
         width: 400px;  /* max: 800px */
-        height: 300px; /* max: 600px */
+        height: 500px; /* max: 600px */
       }
       
       body {
@@ -25,28 +25,37 @@
     <h2 class="text-center">Covid Latest <span id="country"> </span></h2>
     <form id="main" >
 
-    
-
+  
       <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Date</span>
       <input type="text" id="date" disabled class="form-control" placeholder="Date" aria-label="Date" aria-describedby="basic-addon1">
       </div>
-
+ 
       <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Active Cases</span>
       <input type="text" id="active" disabled class="form-control" placeholder="Active Cases" aria-label="Active Cases" aria-describedby="basic-addon1">
-      </div>
+       <span class="input-group-text">Difference</span>
+    <input id="active_diff" disabled type="text" class="form-control" placeholder="Difference" aria-label="Difference">
+    </div>
+
+    
+    </div>
       
 
       <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Death</span>
-      <input type="text" id="deathNew" disabled class="form-control" placeholder="Death" aria-label="Death" aria-describedby="basic-addon1">
-      </div>
+      <input type="text" id="death" disabled class="form-control" placeholder="Death" aria-label="Death" aria-describedby="basic-addon1">
+       <span class="input-group-text">Difference</span>
+    <input id="death_diff" disabled  type="text" class="form-control" placeholder="Difference" aria-label="Difference">  
+    </div>
 
       <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">Confirmed Cases</span>
       <input type="text" id="confirmed" disabled class="form-control" placeholder="Confirmed Cases" aria-label="Confirmed Cases" aria-describedby="basic-addon1">
-      </div>
+     
+       <span class="input-group-text">Difference</span>
+    <input id="confirmed_diff" disabled type="text" class="form-control" placeholder="Difference" aria-label="Difference">
+    </div>
 
     </form>
     

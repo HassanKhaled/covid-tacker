@@ -43,7 +43,7 @@ function fetchData() {
           document.getElementById("country").innerHTML = data.region.name;
           document.getElementById("date").value = data.date;
           document.getElementById("active").value = data.active;
-          document.getElementById("deathNew").value = data.deaths;
+          document.getElementById("death").value = data.deaths;
           document.getElementById("confirmed").value = data.confirmed;
 
         case 17:
