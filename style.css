@@ -1,3 +1,13 @@
-* {
-  background-color: red;
-}
+    html {
+        width: 400px;  /* max: 800px */
+        height: 500px; /* max: 600px */
+      }
+      
+      body {
+        margin: 10px;
+      }
+      
+     .form-control{
+
+        text-align: center;
+      }
