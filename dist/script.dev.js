@@ -28,7 +28,7 @@ function fetchData() {
           res = _context.sent;
 
           if (!(res != null)) {
-            _context.next = 20;
+            _context.next = 22;
             break;
           }
 
@@ -48,8 +48,10 @@ function fetchData() {
           document.getElementById("death_diff").value = data.deaths_diff;
           document.getElementById("confirmed").value = data.confirmed;
           document.getElementById("confirmed_diff").value = data.confirmed_diff;
+          document.getElementById("recovered").value = data.recovered;
+          document.getElementById("recovered_diff").value = data.recovered_diff;
 
-        case 20:
+        case 22:
         case "end":
           return _context.stop();
       }

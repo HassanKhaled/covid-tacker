@@ -40,6 +40,9 @@ async function fetchData() {
         document.getElementById("confirmed").value = data.confirmed;
         document.getElementById("confirmed_diff").value = data.confirmed_diff;
 
+        document.getElementById("recovered").value = data.recovered;
+        document.getElementById("recovered_diff").value = data.recovered_diff;
+
 
     }
 
