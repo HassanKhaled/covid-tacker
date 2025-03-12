@@ -44,6 +44,7 @@ async function fetchData() {
         document.getElementById("recovered_diff").value = data.recovered_diff;
 
 
+        document.getElementById("fatality_rate").value = data.fatality_rate;
     }
 
 }
