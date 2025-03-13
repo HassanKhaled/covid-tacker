@@ -11,3 +11,8 @@
 
         text-align: center;
       }
+
+      .disabled{
+
+        color:red;
+      }
