@@ -14,7 +14,7 @@ function getCurrentDate() {
 }
 
 function fetchData() {
-  var date, res, record, data;
+  var date, res, temp, countries, newSelect, opt, record, data;
   return regeneratorRuntime.async(function fetchData$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -26,17 +26,40 @@ function fetchData() {
 
         case 4:
           res = _context.sent;
+          _context.next = 7;
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/regions"));
+
+        case 7:
+          temp = _context.sent;
+          _context.next = 10;
+          return regeneratorRuntime.awrap(temp.json());
+
+        case 10:
+          countries = _context.sent;
+          newSelect = document.getElementById("countrySelect");
+          console.log(newSelect);
+
+          for (element in countries.data) {
+            opt = document.createElement("option");
+            console.log(countries.data[element].name);
+            console.log(countries.data[element].iso);
+            opt.value = countries.data[element].iso;
+            opt.innerHTML = countries.data[element].name; // whatever property it has
+            // then append it to the select element
+
+            newSelect.appendChild(opt);
+          }
 
           if (!(res != null)) {
-            _context.next = 23;
+            _context.next = 32;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context.next = 9;
+          _context.next = 18;
           return regeneratorRuntime.awrap(res.json());
 
-        case 9:
+        case 18:
           record = _context.sent;
           data = record.data[0];
           console.log(data);
@@ -52,7 +75,7 @@ function fetchData() {
           document.getElementById("recovered_diff").value = data.recovered_diff;
           document.getElementById("fatality_rate").value = data.fatality_rate;
 
-        case 23:
+        case 32:
         case "end":
           return _context.stop();
       }

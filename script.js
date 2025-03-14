@@ -18,7 +18,30 @@ async function fetchData() {
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
+    const temp = await fetch("https://covid-api.com/api/regions");
 
+    const countries = await temp.json();
+
+   
+
+    const newSelect = document.getElementById("countrySelect");
+    console.log(newSelect);
+   
+    for (element in countries.data) {
+      
+        var opt = document.createElement("option");
+
+        console.log(countries.data[element].name);
+        console.log(countries.data[element].iso);
+
+        opt.value = countries.data[element].iso;
+        opt.innerHTML = countries.data[element].name; // whatever property it has
+
+        // then append it to the select element
+        newSelect.appendChild(opt);
+     
+    }
+  
     if (res != null) {
 
         core.style.visibility = 'visible';
