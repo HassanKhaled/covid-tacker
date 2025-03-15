@@ -12,9 +12,21 @@ function getCurrentDate() {
     return `${month}-${day}`
 }
 
+async function getCountryStatics(iso){
+
+const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${iso}`);
+const record = await res.json();
+ console.log(record.data[0]);
+ return record.data[0] ;
+}
+
 async function fetchData() {
+
     core.style.visibility = 'hidden';
     const date = new Date();
+
+
+   await getCountryStatics("CHN");
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
@@ -22,17 +34,12 @@ async function fetchData() {
 
     const countries = await temp.json();
 
-   
-
     const newSelect = document.getElementById("countrySelect");
-    console.log(newSelect);
+  
    
     for (element in countries.data) {
       
         var opt = document.createElement("option");
-
-        console.log(countries.data[element].name);
-        console.log(countries.data[element].iso);
 
         opt.value = countries.data[element].iso;
         opt.innerHTML = countries.data[element].name; // whatever property it has
@@ -48,7 +55,7 @@ async function fetchData() {
         const record = await res.json();
 
         const data = record.data[0];
-        console.log(data);
+        //console.log(data);
 
         document.getElementById("country").innerHTML = data.region.name;
         document.getElementById("date").value = data.date;
