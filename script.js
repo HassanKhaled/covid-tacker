@@ -20,6 +20,14 @@ const record = await res.json();
  return record.data[0] ;
 }
 
+async function getCountries(){
+  const temp = await fetch("https://covid-api.com/api/regions");
+
+    const countries = await temp.json();
+    console.log(countries);
+return countries.data;
+}
+
 async function fetchData() {
 
     core.style.visibility = 'hidden';
@@ -27,6 +35,7 @@ async function fetchData() {
 
 
    await getCountryStatics("CHN");
+   await getCountries();
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
