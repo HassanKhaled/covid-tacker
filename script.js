@@ -24,7 +24,7 @@ async function getCountries(){
   const temp = await fetch("https://covid-api.com/api/regions");
 
     const countries = await temp.json();
-    console.log(countries);
+   
 return countries.data;
 }
 
@@ -35,23 +35,23 @@ async function fetchData() {
 
 
    await getCountryStatics("CHN");
-   await getCountries();
+let countries = await getCountries();
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
-    const temp = await fetch("https://covid-api.com/api/regions");
+    // const temp = await fetch("https://covid-api.com/api/regions");
 
-    const countries = await temp.json();
+    // const countries = await temp.json();
 
     const newSelect = document.getElementById("countrySelect");
   
    
-    for (element in countries.data) {
+    for (element in countries) {
       
         var opt = document.createElement("option");
 
-        opt.value = countries.data[element].iso;
-        opt.innerHTML = countries.data[element].name; // whatever property it has
+        opt.value = countries[element].iso;
+        opt.innerHTML = countries[element].name; // whatever property it has
 
         // then append it to the select element
         newSelect.appendChild(opt);
