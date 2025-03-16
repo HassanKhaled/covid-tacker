@@ -13,56 +13,107 @@ function getCurrentDate() {
   return "".concat(month, "-").concat(day);
 }
 
-function fetchData() {
-  var date, res, temp, countries, newSelect, opt, record, data;
-  return regeneratorRuntime.async(function fetchData$(_context) {
+function getCountryStatics(iso) {
+  var res, record;
+  return regeneratorRuntime.async(function getCountryStatics$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          core.style.visibility = 'hidden';
-          date = new Date();
-          _context.next = 4;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
+          _context.next = 2;
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=").concat(iso)));
 
-        case 4:
+        case 2:
           res = _context.sent;
-          _context.next = 7;
+          _context.next = 5;
+          return regeneratorRuntime.awrap(res.json());
+
+        case 5:
+          record = _context.sent;
+          console.log(record.data[0]);
+          return _context.abrupt("return", record.data[0]);
+
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+}
+
+function getCountries() {
+  var temp, countries;
+  return regeneratorRuntime.async(function getCountries$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.next = 2;
           return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/regions"));
 
-        case 7:
-          temp = _context.sent;
-          _context.next = 10;
+        case 2:
+          temp = _context2.sent;
+          _context2.next = 5;
           return regeneratorRuntime.awrap(temp.json());
 
-        case 10:
-          countries = _context.sent;
-          newSelect = document.getElementById("countrySelect");
-          console.log(newSelect);
+        case 5:
+          countries = _context2.sent;
+          return _context2.abrupt("return", countries.data);
 
-          for (element in countries.data) {
+        case 7:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+}
+
+function fetchData() {
+  var date, countries, res, newSelect, opt, record, data;
+  return regeneratorRuntime.async(function fetchData$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          core.style.visibility = 'hidden';
+          date = new Date();
+          _context3.next = 4;
+          return regeneratorRuntime.awrap(getCountryStatics("CHN"));
+
+        case 4:
+          _context3.next = 6;
+          return regeneratorRuntime.awrap(getCountries());
+
+        case 6:
+          countries = _context3.sent;
+          _context3.next = 9;
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
+
+        case 9:
+          res = _context3.sent;
+          // const temp = await fetch("https://covid-api.com/api/regions");
+          // const countries = await temp.json();
+          newSelect = document.getElementById("countrySelect");
+
+          for (element in countries) {
             opt = document.createElement("option");
-            console.log(countries.data[element].name);
-            console.log(countries.data[element].iso);
-            opt.value = countries.data[element].iso;
-            opt.innerHTML = countries.data[element].name; // whatever property it has
+            opt.value = countries[element].iso;
+            opt.innerHTML = countries[element].name; // whatever property it has
             // then append it to the select element
 
             newSelect.appendChild(opt);
           }
 
           if (!(res != null)) {
-            _context.next = 32;
+            _context3.next = 29;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context.next = 18;
+          _context3.next = 16;
           return regeneratorRuntime.awrap(res.json());
 
-        case 18:
-          record = _context.sent;
-          data = record.data[0];
-          console.log(data);
+        case 16:
+          record = _context3.sent;
+          data = record.data[0]; //console.log(data);
+
           document.getElementById("country").innerHTML = data.region.name;
           document.getElementById("date").value = data.date;
           document.getElementById("active").value = data.active;
@@ -75,12 +126,10 @@ function fetchData() {
           document.getElementById("recovered_diff").value = data.recovered_diff;
           document.getElementById("fatality_rate").value = data.fatality_rate;
 
-        case 32:
+        case 29:
         case "end":
-          return _context.stop();
+          return _context3.stop();
       }
     }
   });
 }
-
-fetchData();

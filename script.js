@@ -87,4 +87,3 @@ let countries = await getCountries();
     }
 
 }
-fetchData();
