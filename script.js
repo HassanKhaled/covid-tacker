@@ -1,6 +1,15 @@
 
 
 const core = document.getElementById("main");
+const searchBtn = document.getElementById("search-btn");
+searchBtn.addEventListener('click',function(){
+
+    fetchData();
+})
+
+core.style.visibility = 'hidden';
+const date = new Date();
+
 function getCurrentDate() {
 
     const currentDate = new Date();
@@ -30,8 +39,7 @@ return countries.data;
 
 async function fetchData() {
 
-    core.style.visibility = 'hidden';
-    const date = new Date();
+ 
 
 
    await getCountryStatics("CHN");

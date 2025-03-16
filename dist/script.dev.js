@@ -1,6 +1,12 @@
 "use strict";
 
 var core = document.getElementById("main");
+var searchBtn = document.getElementById("search-btn");
+searchBtn.addEventListener('click', function () {
+  fetchData();
+});
+core.style.visibility = 'hidden';
+var date = new Date();
 
 function getCurrentDate() {
   var currentDate = new Date();
@@ -67,26 +73,24 @@ function getCountries() {
 }
 
 function fetchData() {
-  var date, countries, res, newSelect, opt, record, data;
+  var countries, res, newSelect, opt, record, data;
   return regeneratorRuntime.async(function fetchData$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          core.style.visibility = 'hidden';
-          date = new Date();
-          _context3.next = 4;
+          _context3.next = 2;
           return regeneratorRuntime.awrap(getCountryStatics("CHN"));
 
-        case 4:
-          _context3.next = 6;
+        case 2:
+          _context3.next = 4;
           return regeneratorRuntime.awrap(getCountries());
 
-        case 6:
+        case 4:
           countries = _context3.sent;
-          _context3.next = 9;
+          _context3.next = 7;
           return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
 
-        case 9:
+        case 7:
           res = _context3.sent;
           // const temp = await fetch("https://covid-api.com/api/regions");
           // const countries = await temp.json();
@@ -102,15 +106,15 @@ function fetchData() {
           }
 
           if (!(res != null)) {
-            _context3.next = 29;
+            _context3.next = 27;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context3.next = 16;
+          _context3.next = 14;
           return regeneratorRuntime.awrap(res.json());
 
-        case 16:
+        case 14:
           record = _context3.sent;
           data = record.data[0]; //console.log(data);
 
@@ -126,7 +130,7 @@ function fetchData() {
           document.getElementById("recovered_diff").value = data.recovered_diff;
           document.getElementById("fatality_rate").value = data.fatality_rate;
 
-        case 29:
+        case 27:
         case "end":
           return _context3.stop();
       }
