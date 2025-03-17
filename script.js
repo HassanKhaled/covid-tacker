@@ -58,8 +58,8 @@ async function fillCountriesSelect(){
 
  fillCountriesSelect();
 
-function fillElementByRequest(id, data){
-    document.getElementById(id).value = data[data];
+function fillElementByRequest(id, data,attr){
+    document.getElementById(id).value = data[attr];
 
 }
 
@@ -84,7 +84,9 @@ async function fetchData() {
        document.getElementById("date").value = data["date"];
         //fillElementByRequest("date","date");
 
-        document.getElementById("active").value = data["active"];
+
+        fillElementByRequest("active",data,"active")
+        //document.getElementById("active").value = data["active"];
 
         document.getElementById("active_diff").value = data["active_diff"];
 
