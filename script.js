@@ -37,25 +37,14 @@ async function getCountries(){
 return countries.data;
 }
 
-async function fetchData() {
+async function fillCountriesSelect(){
 
- 
-
-
-   await getCountryStatics("CHN");
-let countries = await getCountries();
-
-    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
-
-    // const temp = await fetch("https://covid-api.com/api/regions");
-
-    // const countries = await temp.json();
-
+    let countries = await getCountries();
     const newSelect = document.getElementById("countrySelect");
-  
-   
+
+
     for (element in countries) {
-      
+
         var opt = document.createElement("option");
 
         opt.value = countries[element].iso;
@@ -63,8 +52,25 @@ let countries = await getCountries();
 
         // then append it to the select element
         newSelect.appendChild(opt);
-     
+
     }
+}
+
+ fillCountriesSelect();
+
+async function fetchData() {
+
+ 
+
+
+   await getCountryStatics("CHN");
+
+
+
+    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
+
+  
+   
   
     if (res != null) {
 
@@ -74,8 +80,8 @@ let countries = await getCountries();
         const data = record.data[0];
         //console.log(data);
 
-        document.getElementById("country").innerHTML = data.region.name;
-        document.getElementById("date").value = data.date;
+        document.getElementById("country").innerHTML = data["region"].name;
+        document.getElementById("date").value = data["date"];
 
 
         document.getElementById("active").value = data.active;

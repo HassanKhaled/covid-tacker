@@ -72,28 +72,17 @@ function getCountries() {
   });
 }
 
-function fetchData() {
-  var countries, res, newSelect, opt, record, data;
-  return regeneratorRuntime.async(function fetchData$(_context3) {
+function fillCountriesSelect() {
+  var countries, newSelect, opt;
+  return regeneratorRuntime.async(function fillCountriesSelect$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return regeneratorRuntime.awrap(getCountryStatics("CHN"));
-
-        case 2:
-          _context3.next = 4;
           return regeneratorRuntime.awrap(getCountries());
 
-        case 4:
+        case 2:
           countries = _context3.sent;
-          _context3.next = 7;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
-
-        case 7:
-          res = _context3.sent;
-          // const temp = await fetch("https://covid-api.com/api/regions");
-          // const countries = await temp.json();
           newSelect = document.getElementById("countrySelect");
 
           for (element in countries) {
@@ -105,21 +94,47 @@ function fetchData() {
             newSelect.appendChild(opt);
           }
 
+        case 5:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  });
+}
+
+fillCountriesSelect();
+
+function fetchData() {
+  var res, record, data;
+  return regeneratorRuntime.async(function fetchData$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.next = 2;
+          return regeneratorRuntime.awrap(getCountryStatics("CHN"));
+
+        case 2:
+          _context4.next = 4;
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
+
+        case 4:
+          res = _context4.sent;
+
           if (!(res != null)) {
-            _context3.next = 27;
+            _context4.next = 22;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context3.next = 14;
+          _context4.next = 9;
           return regeneratorRuntime.awrap(res.json());
 
-        case 14:
-          record = _context3.sent;
+        case 9:
+          record = _context4.sent;
           data = record.data[0]; //console.log(data);
 
-          document.getElementById("country").innerHTML = data.region.name;
-          document.getElementById("date").value = data.date;
+          document.getElementById("country").innerHTML = data["region"].name;
+          document.getElementById("date").value = data["date"];
           document.getElementById("active").value = data.active;
           document.getElementById("active_diff").value = data.active_diff;
           document.getElementById("death").value = data.deaths;
@@ -130,9 +145,9 @@ function fetchData() {
           document.getElementById("recovered_diff").value = data.recovered_diff;
           document.getElementById("fatality_rate").value = data.fatality_rate;
 
-        case 27:
+        case 22:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
     }
   });
