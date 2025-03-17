@@ -104,6 +104,10 @@ function fillCountriesSelect() {
 
 fillCountriesSelect();
 
+function fillElementByRequest(id, data) {
+  document.getElementById(id).value = data[data];
+}
+
 function fetchData() {
   var res, record, data;
   return regeneratorRuntime.async(function fetchData$(_context4) {
@@ -134,16 +138,17 @@ function fetchData() {
           data = record.data[0]; //console.log(data);
 
           document.getElementById("country").innerHTML = data["region"].name;
-          document.getElementById("date").value = data["date"];
-          document.getElementById("active").value = data.active;
-          document.getElementById("active_diff").value = data.active_diff;
-          document.getElementById("death").value = data.deaths;
-          document.getElementById("death_diff").value = data.deaths_diff;
-          document.getElementById("confirmed").value = data.confirmed;
-          document.getElementById("confirmed_diff").value = data.confirmed_diff;
-          document.getElementById("recovered").value = data.recovered;
-          document.getElementById("recovered_diff").value = data.recovered_diff;
-          document.getElementById("fatality_rate").value = data.fatality_rate;
+          document.getElementById("date").value = data["date"]; //fillElementByRequest("date","date");
+
+          document.getElementById("active").value = data["active"];
+          document.getElementById("active_diff").value = data["active_diff"];
+          document.getElementById("death").value = data["deaths"];
+          document.getElementById("death_diff").value = data["deaths_diff"];
+          document.getElementById("confirmed").value = data["confirmed"];
+          document.getElementById("confirmed_diff").value = data["confirmed_diff"];
+          document.getElementById("recovered").value = data["recovered"];
+          document.getElementById("recovered_diff").value = data["recovered_diff"];
+          document.getElementById("fatality_rate").value = data["fatality_rate"];
 
         case 22:
         case "end":

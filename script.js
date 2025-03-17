@@ -58,14 +58,14 @@ async function fillCountriesSelect(){
 
  fillCountriesSelect();
 
+function fillElementByRequest(id, data){
+    document.getElementById(id).value = data[data];
+
+}
+
 async function fetchData() {
 
- 
-
-
    await getCountryStatics("CHN");
-
-
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
 
@@ -81,23 +81,24 @@ async function fetchData() {
         //console.log(data);
 
         document.getElementById("country").innerHTML = data["region"].name;
-        document.getElementById("date").value = data["date"];
+       document.getElementById("date").value = data["date"];
+        //fillElementByRequest("date","date");
+
+        document.getElementById("active").value = data["active"];
+
+        document.getElementById("active_diff").value = data["active_diff"];
+
+        document.getElementById("death").value = data["deaths"];
+        document.getElementById("death_diff").value = data["deaths_diff"];
+
+        document.getElementById("confirmed").value = data["confirmed"];
+        document.getElementById("confirmed_diff").value = data["confirmed_diff"];
+
+        document.getElementById("recovered").value = data["recovered"];
+        document.getElementById("recovered_diff").value = data["recovered_diff"];
 
 
-        document.getElementById("active").value = data.active;
-        document.getElementById("active_diff").value = data.active_diff;
-
-        document.getElementById("death").value = data.deaths;
-        document.getElementById("death_diff").value = data.deaths_diff;
-
-        document.getElementById("confirmed").value = data.confirmed;
-        document.getElementById("confirmed_diff").value = data.confirmed_diff;
-
-        document.getElementById("recovered").value = data.recovered;
-        document.getElementById("recovered_diff").value = data.recovered_diff;
-
-
-        document.getElementById("fatality_rate").value = data.fatality_rate;
+        document.getElementById("fatality_rate").value = data["fatality_rate"];
     }
 
 }
