@@ -81,26 +81,25 @@ async function fetchData() {
         //console.log(data);
 
         document.getElementById("country").innerHTML = data["region"].name;
-       document.getElementById("date").value = data["date"];
-        //fillElementByRequest("date","date");
+        document.getElementById("date").value = data["date"];
 
+        fillElementByRequest("active",data,"active");
+    
+        fillElementByRequest("active_diff", data, "active_diff");
+      
+        fillElementByRequest("death", data, "deaths");
+      
+        fillElementByRequest("death_diff", data, "deaths_diff");
+       
+        fillElementByRequest("confirmed", data, "confirmed");
+  
+        fillElementByRequest("confirmed_diff", data, "confirmed_diff");
+ 
+        fillElementByRequest("recovered", data, "recovered");
 
-        fillElementByRequest("active",data,"active")
-        //document.getElementById("active").value = data["active"];
-
-        document.getElementById("active_diff").value = data["active_diff"];
-
-        document.getElementById("death").value = data["deaths"];
-        document.getElementById("death_diff").value = data["deaths_diff"];
-
-        document.getElementById("confirmed").value = data["confirmed"];
-        document.getElementById("confirmed_diff").value = data["confirmed_diff"];
-
-        document.getElementById("recovered").value = data["recovered"];
-        document.getElementById("recovered_diff").value = data["recovered_diff"];
-
-
-        document.getElementById("fatality_rate").value = data["fatality_rate"];
+        fillElementByRequest("recovered_diff", data, "recovered_diff");
+        
+        fillElementByRequest("fatality_rate", data, "fatality_rate");
     }
 
 }
