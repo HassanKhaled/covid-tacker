@@ -39,6 +39,14 @@ async function getCountries(){
 return countries.data;
 }
 
+function getFlagEmoji(countryCode) {
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char =>  127397 + char.charCodeAt());
+  return String.fromCodePoint(...codePoints);
+}
+
 async function fillCountriesSelect(){
 
     let countries = await getCountries();
@@ -71,7 +79,7 @@ async function fetchData() {
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${newSelect.value}`);
 
-  
+   // alert(getFlagEmoji(newSelect.value));
    
   
     if (res != null) {
