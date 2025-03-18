@@ -2,6 +2,8 @@
 
 const core = document.getElementById("main");
 const searchBtn = document.getElementById("search-btn");
+let newSelect = document.getElementById("countrySelect");
+
 searchBtn.addEventListener('click',function(){
 
     fetchData();
@@ -40,7 +42,7 @@ return countries.data;
 async function fillCountriesSelect(){
 
     let countries = await getCountries();
-    const newSelect = document.getElementById("countrySelect");
+    newSelect = document.getElementById("countrySelect");
 
 
     for (element in countries) {
@@ -65,9 +67,9 @@ function fillElementByRequest(id, data,attr){
 
 async function fetchData() {
 
-   await getCountryStatics("CHN");
+  // await getCountryStatics("CHN");
 
-    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=EGY`);
+    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${newSelect.value}`);
 
   
    

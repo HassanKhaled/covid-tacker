@@ -2,6 +2,7 @@
 
 var core = document.getElementById("main");
 var searchBtn = document.getElementById("search-btn");
+var newSelect = document.getElementById("countrySelect");
 searchBtn.addEventListener('click', function () {
   fetchData();
 });
@@ -73,7 +74,7 @@ function getCountries() {
 }
 
 function fillCountriesSelect() {
-  var countries, newSelect, opt;
+  var countries, opt;
   return regeneratorRuntime.async(function fillCountriesSelect$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -115,25 +116,21 @@ function fetchData() {
       switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return regeneratorRuntime.awrap(getCountryStatics("CHN"));
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=").concat(newSelect.value)));
 
         case 2:
-          _context4.next = 4;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=EGY")));
-
-        case 4:
           res = _context4.sent;
 
           if (!(res != null)) {
-            _context4.next = 22;
+            _context4.next = 20;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context4.next = 9;
+          _context4.next = 7;
           return regeneratorRuntime.awrap(res.json());
 
-        case 9:
+        case 7:
           record = _context4.sent;
           data = record.data[0]; //console.log(data);
 
@@ -149,7 +146,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 22:
+        case 20:
         case "end":
           return _context4.stop();
       }
