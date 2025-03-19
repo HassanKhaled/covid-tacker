@@ -94,7 +94,7 @@ async function fetchData() {
 
         document.getElementById("date").value = data["date"];
 
-      document.title = data["region"].name
+      document.title = `Covid-19 Stats- ${data["region"].name}`;
 
         fillElementByRequest("active",data,"active");
     

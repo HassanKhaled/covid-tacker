@@ -151,7 +151,7 @@ function fetchData() {
 
           document.getElementById("country").innerHTML = data["region"].name;
           document.getElementById("date").value = data["date"];
-          document.title = data["region"].name;
+          document.title = "Covid-19 Stats- ".concat(data["region"].name);
           fillElementByRequest("active", data, "active");
           fillElementByRequest("active_diff", data, "active_diff");
           fillElementByRequest("death", data, "deaths");
