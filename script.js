@@ -91,7 +91,10 @@ async function fetchData() {
         //console.log(data);
 
         document.getElementById("country").innerHTML = data["region"].name;
+
         document.getElementById("date").value = data["date"];
+
+      document.title = data["region"].name
 
         fillElementByRequest("active",data,"active");
     

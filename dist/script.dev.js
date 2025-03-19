@@ -137,7 +137,7 @@ function fetchData() {
           res = _context4.sent;
 
           if (!(res != null)) {
-            _context4.next = 20;
+            _context4.next = 21;
             break;
           }
 
@@ -151,6 +151,7 @@ function fetchData() {
 
           document.getElementById("country").innerHTML = data["region"].name;
           document.getElementById("date").value = data["date"];
+          document.title = data["region"].name;
           fillElementByRequest("active", data, "active");
           fillElementByRequest("active_diff", data, "active_diff");
           fillElementByRequest("death", data, "deaths");
@@ -161,7 +162,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 20:
+        case 21:
         case "end":
           return _context4.stop();
       }
