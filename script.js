@@ -80,16 +80,18 @@ function fillElementByRequest(id, data,attr){
 
 async function fetchData() {
 
-  // await getCountryStatics("CHN");
+  
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${newSelect.value}`);
 
-   // alert(getFlagEmoji(newSelect.value));
+  loader.style.display = 'block';
    
   
     if (res != null) {
 
         core.style.visibility = 'visible';
+      loader.style.display = 'none';
+
         const record = await res.json();
 
         const data = record.data[0];

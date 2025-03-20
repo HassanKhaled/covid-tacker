@@ -137,17 +137,19 @@ function fetchData() {
 
         case 2:
           res = _context4.sent;
+          loader.style.display = 'block';
 
           if (!(res != null)) {
-            _context4.next = 21;
+            _context4.next = 23;
             break;
           }
 
           core.style.visibility = 'visible';
-          _context4.next = 7;
+          loader.style.display = 'none';
+          _context4.next = 9;
           return regeneratorRuntime.awrap(res.json());
 
-        case 7:
+        case 9:
           record = _context4.sent;
           data = record.data[0]; //console.log(data);
 
@@ -164,7 +166,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 21:
+        case 23:
         case "end":
           return _context4.stop();
       }
