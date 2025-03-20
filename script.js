@@ -97,6 +97,11 @@ async function fetchData() {
         const data = record.data[0];
         console.log(data);
 
+      const parentElement = document.getElementById("flag");
+      const flag = new CountryFlag(parentElement);
+    
+      flag.selectByAlpha3(data["region"].iso.toLowerCase());
+
         document.getElementById("country").innerHTML = data["region"].name;
 
         document.getElementById("date").value = data["date"];
@@ -123,3 +128,5 @@ async function fetchData() {
     }
 
 }
+
+
