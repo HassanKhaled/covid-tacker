@@ -1,6 +1,8 @@
 
 
 const core = document.getElementById("main");
+let loader = document.getElementById("loader");
+
 const searchBtn = document.getElementById("search-btn");
 let newSelect = document.getElementById("countrySelect");
 
@@ -10,6 +12,9 @@ searchBtn.addEventListener('click',function(){
 })
 
 core.style.visibility = 'hidden';
+loader.style.display = 'none';
+
+
 const date = new Date();
 
 function getCurrentDate() {
