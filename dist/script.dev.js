@@ -140,7 +140,7 @@ function fetchData() {
           loader.style.display = 'block';
 
           if (!(res != null)) {
-            _context4.next = 23;
+            _context4.next = 24;
             break;
           }
 
@@ -151,8 +151,8 @@ function fetchData() {
 
         case 9:
           record = _context4.sent;
-          data = record.data[0]; //console.log(data);
-
+          data = record.data[0];
+          console.log(data);
           document.getElementById("country").innerHTML = data["region"].name;
           document.getElementById("date").value = data["date"];
           document.title = "Covid-19 Stats- ".concat(data["region"].name);
@@ -166,7 +166,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 23:
+        case 24:
         case "end":
           return _context4.stop();
       }

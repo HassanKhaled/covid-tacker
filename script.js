@@ -95,7 +95,7 @@ async function fetchData() {
         const record = await res.json();
 
         const data = record.data[0];
-        //console.log(data);
+        console.log(data);
 
         document.getElementById("country").innerHTML = data["region"].name;
 
