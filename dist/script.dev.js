@@ -10,8 +10,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var core = document.getElementById("main");
 var loader = document.getElementById("loader");
+var dateQuery = document.getElementById("date");
 var searchBtn = document.getElementById("search-btn");
 var newSelect = document.getElementById("countrySelect");
+dateQuery.value = "2021-".concat(getCurrentDate());
 searchBtn.addEventListener('click', function () {
   fetchData();
 });

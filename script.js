@@ -2,9 +2,13 @@
 
 const core = document.getElementById("main");
 let loader = document.getElementById("loader");
+let dateQuery = document.getElementById("date");
 
 const searchBtn = document.getElementById("search-btn");
 let newSelect = document.getElementById("countrySelect");
+
+dateQuery.value = `2021-${getCurrentDate()}`;
+
 
 searchBtn.addEventListener('click',function(){
 
