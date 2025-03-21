@@ -39,7 +39,7 @@ function getCountryStatics(iso) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=").concat(iso)));
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(dateQuery.value, "&iso=").concat(iso)));
 
         case 2:
           res = _context.sent;
@@ -139,7 +139,7 @@ function fetchData() {
       switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(getCurrentDate(), "&iso=").concat(newSelect.value)));
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=".concat(dateQuery.value, "&iso=").concat(newSelect.value)));
 
         case 2:
           res = _context4.sent;
@@ -161,7 +161,7 @@ function fetchData() {
           data = record.data[0];
           console.log(data);
           document.getElementById("country").innerHTML = data["region"].name;
-          document.getElementById("date").value = data["date"];
+          dateQuery.value = data["date"];
           document.title = "Covid-19 Stats- ".concat(data["region"].name);
           fillElementByRequest("active", data, "active");
           fillElementByRequest("active_diff", data, "active_diff");

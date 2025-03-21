@@ -34,7 +34,7 @@ function getCurrentDate() {
 
 async function getCountryStatics(iso){
 
-const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${iso}`);
+  const res = await fetch(`https://covid-api.com/api/reports?date=2021-${dateQuery.value}&iso=${iso}`);
 const record = await res.json();
  console.log(record.data[0]);
  return record.data[0] ;
@@ -92,7 +92,7 @@ async function fetchData() {
 
   
 
-    const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${newSelect.value}`);
+  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${newSelect.value}`);
 
   toggledisplay(loader);
   //loader.style.display = 'block';
@@ -111,7 +111,7 @@ async function fetchData() {
 
         document.getElementById("country").innerHTML = data["region"].name;
 
-        document.getElementById("date").value = data["date"];
+      dateQuery.value = data["date"];
 
       document.title = `Covid-19 Stats- ${data["region"].name}`;
 
