@@ -78,19 +78,26 @@ function fillElementByRequest(id, data,attr){
 
 }
 
+function toggledisplay(elem){
+
+  elem.style.visibility = elem.style.visibility == 'block' ? 'none' : 'block'; 
+
+}
+
 async function fetchData() {
 
   
 
     const res = await fetch(`https://covid-api.com/api/reports?date=2021-${getCurrentDate()}&iso=${newSelect.value}`);
 
-  loader.style.display = 'block';
+  toggledisplay(loader);
+  //loader.style.display = 'block';
    
   
     if (res != null) {
-
-        core.style.visibility = 'visible';
-      loader.style.display = 'none';
+//toggleVisbility(core);
+  core.style.visibility = 'visible';
+      toggledisplay(loader);
 
         const record = await res.json();
 

@@ -126,6 +126,10 @@ function fillElementByRequest(id, data, attr) {
   document.getElementById(id).value = data[attr];
 }
 
+function toggledisplay(elem) {
+  elem.style.visibility = elem.style.visibility == 'block' ? 'none' : 'block';
+}
+
 function fetchData() {
   var res, record, data;
   return regeneratorRuntime.async(function fetchData$(_context4) {
@@ -137,15 +141,16 @@ function fetchData() {
 
         case 2:
           res = _context4.sent;
-          loader.style.display = 'block';
+          toggledisplay(loader); //loader.style.display = 'block';
 
           if (!(res != null)) {
             _context4.next = 24;
             break;
           }
 
+          //toggleVisbility(core);
           core.style.visibility = 'visible';
-          loader.style.display = 'none';
+          toggledisplay(loader);
           _context4.next = 9;
           return regeneratorRuntime.awrap(res.json());
 
