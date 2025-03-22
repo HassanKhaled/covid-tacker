@@ -21,8 +21,8 @@
     
     
     html {
-        width: 400px;  /* max: 800px */
-        height: 500px; /* max: 600px */
+        width: var(--width-4) ;  /* max: 800px */
+        height: var(--height-5) ; /* max: 600px */
       }
       
       body {
