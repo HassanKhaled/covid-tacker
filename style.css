@@ -1,3 +1,25 @@
+:root {
+  --width-1: 100px;
+  --width-2: 200px;
+  --width-3: 300px;
+  --width-4: 400px;
+  --width-5: 500px;
+  --width-6: 600px;
+  --width-7: 700px;
+  --width-8: 800px;
+  
+  --height-1:100px;
+  --height-2:200px;
+  --height-3:300px;
+  --height-4:400px;
+  --height-5:500px;
+  --height-6:600px;
+}
+
+    
+    
+    
+    
     html {
         width: 400px;  /* max: 800px */
         height: 500px; /* max: 600px */
@@ -38,4 +60,9 @@
    margin-left: auto;
   margin-right: auto;
 
+}
+
+.round{
+
+  border-radius:25;
 }
