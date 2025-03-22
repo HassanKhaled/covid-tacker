@@ -14,6 +14,13 @@
   --height-4:400px;
   --height-5:500px;
   --height-6:600px;
+
+  --rad-1:5px;
+  --rad-2:10px;
+  --rad-3:15px;
+  --rad-4:20px;
+  --rad-5:25px;
+  
 }
 
     
@@ -64,5 +71,5 @@
 
 .round{
 
-  border-radius:25;
+  border-radius:var( --rad-3);
 }
