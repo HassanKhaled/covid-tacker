@@ -90,20 +90,14 @@ function toggledisplay(elem){
 
 async function fetchData() {
 
-  
-
-//  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${newSelect.value}`);
-  const res = await getCountryStatics(newSelect.value);
   toggledisplay(loader);
-  //loader.style.display = 'block';
-   
-  
-    if (res != null) {
-//toggleVisbility(core);
-  core.style.visibility = 'visible';
-      toggledisplay(loader);
 
-       const record = await getCountryStatics(newSelect.value);
+    if (res != null) {
+
+     core.style.visibility = 'visible';
+    toggledisplay(loader);
+
+      const record = await getCountryStatics(newSelect.value);
 
         const data = record.data[0];
         console.log(data);

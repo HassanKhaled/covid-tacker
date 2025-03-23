@@ -133,30 +133,24 @@ function toggledisplay(elem) {
 }
 
 function fetchData() {
-  var res, record, data;
+  var record, data;
   return regeneratorRuntime.async(function fetchData$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
         case 0:
-          _context4.next = 2;
-          return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
-
-        case 2:
-          res = _context4.sent;
-          toggledisplay(loader); //loader.style.display = 'block';
+          toggledisplay(loader);
 
           if (!(res != null)) {
-            _context4.next = 24;
+            _context4.next = 21;
             break;
           }
 
-          //toggleVisbility(core);
           core.style.visibility = 'visible';
           toggledisplay(loader);
-          _context4.next = 9;
+          _context4.next = 6;
           return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
-        case 9:
+        case 6:
           record = _context4.sent;
           data = record.data[0];
           console.log(data);
@@ -173,7 +167,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 24:
+        case 21:
         case "end":
           return _context4.stop();
       }
