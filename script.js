@@ -48,13 +48,6 @@ async function getCountries(){
 return countries.data;
 }
 
-function getFlagEmoji(countryCode) {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split('')
-    .map(char =>  127397 + char.charCodeAt());
-  return String.fromCodePoint(...codePoints);
-}
 
 async function fillCountriesSelect(){
 
@@ -100,8 +93,7 @@ async function fetchData() {
       const record = await getCountryStatics(newSelect.value);
 
         const data = record.data[0];
-        console.log(data);
-
+       
 
         document.getElementById("country").innerHTML = data["region"].name;
 

@@ -1,13 +1,5 @@
 "use strict";
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var core = document.getElementById("main");
 var loader = document.getElementById("loader");
 var dateQuery = document.getElementById("date");
@@ -85,13 +77,6 @@ function getCountries() {
   });
 }
 
-function getFlagEmoji(countryCode) {
-  var codePoints = countryCode.toUpperCase().split('').map(function (_char) {
-    return 127397 + _char.charCodeAt();
-  });
-  return String.fromCodePoint.apply(String, _toConsumableArray(codePoints));
-}
-
 function fillCountriesSelect() {
   var countries, opt;
   return regeneratorRuntime.async(function fillCountriesSelect$(_context3) {
@@ -141,7 +126,7 @@ function fetchData() {
           toggledisplay(loader);
 
           if (!(res != null)) {
-            _context4.next = 21;
+            _context4.next = 20;
             break;
           }
 
@@ -153,7 +138,6 @@ function fetchData() {
         case 6:
           record = _context4.sent;
           data = record.data[0];
-          console.log(data);
           document.getElementById("country").innerHTML = data["region"].name;
           dateQuery.value = data["date"];
           document.title = "Covid-19 Stats- ".concat(data["region"].name);
@@ -167,7 +151,7 @@ function fetchData() {
           fillElementByRequest("recovered_diff", data, "recovered_diff");
           fillElementByRequest("fatality_rate", data, "fatality_rate");
 
-        case 21:
+        case 20:
         case "end":
           return _context4.stop();
       }
