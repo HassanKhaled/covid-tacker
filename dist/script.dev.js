@@ -39,7 +39,7 @@ function getCountryStatics(iso) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=2021-".concat(dateQuery.value, "&iso=").concat(iso)));
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=".concat(dateQuery.value, "&iso=").concat(iso)));
 
         case 2:
           res = _context.sent;
@@ -48,8 +48,8 @@ function getCountryStatics(iso) {
 
         case 5:
           record = _context.sent;
-          console.log(record.data[0]);
-          return _context.abrupt("return", record.data[0]);
+          console.log(record);
+          return _context.abrupt("return", record);
 
         case 8:
         case "end":
@@ -139,7 +139,7 @@ function fetchData() {
       switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=".concat(dateQuery.value, "&iso=").concat(newSelect.value)));
+          return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
         case 2:
           res = _context4.sent;
@@ -154,7 +154,7 @@ function fetchData() {
           core.style.visibility = 'visible';
           toggledisplay(loader);
           _context4.next = 9;
-          return regeneratorRuntime.awrap(res.json());
+          return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
         case 9:
           record = _context4.sent;

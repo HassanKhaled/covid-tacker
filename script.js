@@ -34,10 +34,10 @@ function getCurrentDate() {
 
 async function getCountryStatics(iso){
 
-  const res = await fetch(`https://covid-api.com/api/reports?date=2021-${dateQuery.value}&iso=${iso}`);
-const record = await res.json();
- console.log(record.data[0]);
- return record.data[0] ;
+  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}`);
+ const record = await res.json();
+ console.log(record);
+ return record ;
 }
 
 async function getCountries(){
@@ -92,8 +92,8 @@ async function fetchData() {
 
   
 
-  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${newSelect.value}`);
-
+//  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${newSelect.value}`);
+  const res = await getCountryStatics(newSelect.value);
   toggledisplay(loader);
   //loader.style.display = 'block';
    
@@ -103,7 +103,7 @@ async function fetchData() {
   core.style.visibility = 'visible';
       toggledisplay(loader);
 
-        const record = await res.json();
+       const record = await getCountryStatics(newSelect.value);
 
         const data = record.data[0];
         console.log(data);
