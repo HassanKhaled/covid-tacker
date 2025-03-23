@@ -123,35 +123,32 @@ function fetchData() {
     while (1) {
       switch (_context4.prev = _context4.next) {
         case 0:
-          toggledisplay(loader);
-
-          if (!(res != null)) {
-            _context4.next = 20;
-            break;
-          }
-
-          core.style.visibility = 'visible';
-          toggledisplay(loader);
-          _context4.next = 6;
+          _context4.next = 2;
           return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
-        case 6:
+        case 2:
           record = _context4.sent;
-          data = record.data[0];
-          document.getElementById("country").innerHTML = data["region"].name;
-          dateQuery.value = data["date"];
-          document.title = "Covid-19 Stats- ".concat(data["region"].name);
-          fillElementByRequest("active", data, "active");
-          fillElementByRequest("active_diff", data, "active_diff");
-          fillElementByRequest("death", data, "deaths");
-          fillElementByRequest("death_diff", data, "deaths_diff");
-          fillElementByRequest("confirmed", data, "confirmed");
-          fillElementByRequest("confirmed_diff", data, "confirmed_diff");
-          fillElementByRequest("recovered", data, "recovered");
-          fillElementByRequest("recovered_diff", data, "recovered_diff");
-          fillElementByRequest("fatality_rate", data, "fatality_rate");
+          toggledisplay(loader);
 
-        case 20:
+          if (record != null) {
+            core.style.visibility = 'visible';
+            toggledisplay(loader);
+            data = record.data[0];
+            document.getElementById("country").innerHTML = data["region"].name;
+            dateQuery.value = data["date"];
+            document.title = "Covid-19 Stats- ".concat(data["region"].name);
+            fillElementByRequest("active", data, "active");
+            fillElementByRequest("active_diff", data, "active_diff");
+            fillElementByRequest("death", data, "deaths");
+            fillElementByRequest("death_diff", data, "deaths_diff");
+            fillElementByRequest("confirmed", data, "confirmed");
+            fillElementByRequest("confirmed_diff", data, "confirmed_diff");
+            fillElementByRequest("recovered", data, "recovered");
+            fillElementByRequest("recovered_diff", data, "recovered_diff");
+            fillElementByRequest("fatality_rate", data, "fatality_rate");
+          }
+
+        case 5:
         case "end":
           return _context4.stop();
       }

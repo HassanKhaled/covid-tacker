@@ -82,15 +82,15 @@ function toggledisplay(elem){
 }
 
 async function fetchData() {
-
+  const record = await getCountryStatics(newSelect.value);
   toggledisplay(loader);
 
-    if (res != null) {
+  if (record != null) {
 
      core.style.visibility = 'visible';
     toggledisplay(loader);
 
-      const record = await getCountryStatics(newSelect.value);
+      
 
         const data = record.data[0];
        
