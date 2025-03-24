@@ -132,6 +132,18 @@ function fillCountriesSelect() {
   });
 }
 
+function fillProvinceSelect() {
+  return regeneratorRuntime.async(function fillProvinceSelect$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  });
+}
+
 fillCountriesSelect();
 
 function fillElementByRequest(id, data, attr) {
@@ -144,21 +156,21 @@ function toggledisplay(elem) {
 
 function fetchData() {
   var test, record, data;
-  return regeneratorRuntime.async(function fetchData$(_context5) {
+  return regeneratorRuntime.async(function fetchData$(_context6) {
     while (1) {
-      switch (_context5.prev = _context5.next) {
+      switch (_context6.prev = _context6.next) {
         case 0:
-          _context5.next = 2;
+          _context6.next = 2;
           return regeneratorRuntime.awrap(getProvincesByCountryIso(newSelect.value));
 
         case 2:
-          test = _context5.sent;
+          test = _context6.sent;
           console.log(test);
-          _context5.next = 6;
+          _context6.next = 6;
           return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
         case 6:
-          record = _context5.sent;
+          record = _context6.sent;
           toggledisplay(loader);
 
           if (record != null) {
@@ -181,7 +193,7 @@ function fetchData() {
 
         case 9:
         case "end":
-          return _context5.stop();
+          return _context6.stop();
       }
     }
   });

@@ -79,6 +79,27 @@ async function fillCountriesSelect(){
     }
 }
 
+
+async function fillProvinceSelect() {
+
+  // let countries = await getCountries();
+  // newSelect = document.getElementById("countrySelect");
+
+
+  // for (element in countries) {
+
+  //   var opt = document.createElement("option");
+
+  //   opt.value = countries[element].iso;
+  //   opt.innerHTML = countries[element].name; // whatever property it has
+
+  //   // then append it to the select element
+  //   newSelect.appendChild(opt);
+
+  // }
+}
+
+
  fillCountriesSelect();
 
 function fillElementByRequest(id, data,attr){
