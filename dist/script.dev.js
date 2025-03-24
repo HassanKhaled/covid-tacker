@@ -132,11 +132,30 @@ function fillCountriesSelect() {
   });
 }
 
-function fillProvinceSelect() {
+function fillProvinceSelect(iso) {
+  var provinces, opt;
   return regeneratorRuntime.async(function fillProvinceSelect$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
+          _context5.next = 2;
+          return regeneratorRuntime.awrap(getProvincesByCountryIso(iso));
+
+        case 2:
+          provinces = _context5.sent;
+          newSelect = document.getElementById("provinceSelect");
+          console.log(provinces);
+
+          for (element in provinces) {
+            opt = document.createElement("option");
+            opt.value = provinces[element].iso;
+            opt.innerHTML = provinces[element].province; // whatever property it has
+            // then append it to the select element
+
+            newSelect.appendChild(opt);
+          }
+
+        case 6:
         case "end":
           return _context5.stop();
       }
@@ -155,22 +174,17 @@ function toggledisplay(elem) {
 }
 
 function fetchData() {
-  var test, record, data;
+  var record, data;
   return regeneratorRuntime.async(function fetchData$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
           _context6.next = 2;
-          return regeneratorRuntime.awrap(getProvincesByCountryIso(newSelect.value));
-
-        case 2:
-          test = _context6.sent;
-          console.log(test);
-          _context6.next = 6;
           return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
 
-        case 6:
+        case 2:
           record = _context6.sent;
+          fillProvinceSelect("CHN");
           toggledisplay(loader);
 
           if (record != null) {
@@ -191,7 +205,7 @@ function fetchData() {
             fillElementByRequest("fatality_rate", data, "fatality_rate");
           }
 
-        case 9:
+        case 6:
         case "end":
           return _context6.stop();
       }

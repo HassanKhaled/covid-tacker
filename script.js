@@ -80,23 +80,23 @@ async function fillCountriesSelect(){
 }
 
 
-async function fillProvinceSelect() {
+async function fillProvinceSelect(iso) {
 
-  // let countries = await getCountries();
-  // newSelect = document.getElementById("countrySelect");
+  let provinces = await getProvincesByCountryIso(iso);
+  newSelect = document.getElementById("provinceSelect");
 
+console.log(provinces);
+  for (element in provinces) {
 
-  // for (element in countries) {
+    var opt = document.createElement("option");
 
-  //   var opt = document.createElement("option");
+    opt.value = provinces[element].iso;
+    opt.innerHTML = provinces[element].province; // whatever property it has
 
-  //   opt.value = countries[element].iso;
-  //   opt.innerHTML = countries[element].name; // whatever property it has
+    // then append it to the select element
+    newSelect.appendChild(opt);
 
-  //   // then append it to the select element
-  //   newSelect.appendChild(opt);
-
-  // }
+  }
 }
 
 
@@ -114,12 +114,11 @@ function toggledisplay(elem){
 }
 
 async function fetchData() {
-   let test = await getProvincesByCountryIso(newSelect.value);
-
-   console.log(test);
-
+   
 
   const record = await getCountryStatics(newSelect.value);
+
+  fillProvinceSelect("CHN");
   toggledisplay(loader);
 
   if (record != null) {
