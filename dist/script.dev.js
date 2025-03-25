@@ -8,10 +8,6 @@ var newSelect = document.getElementById("countrySelect");
 core.style.visibility = 'hidden';
 loader.style.display = 'none';
 var date = new Date();
-
-function test() {}
-
-test();
 dateQuery.value = "2021-".concat(getCurrentDate());
 searchBtn.addEventListener('click', function () {
   fetchData();

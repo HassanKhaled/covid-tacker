@@ -10,12 +10,7 @@ loader.style.display = 'none';
 
 const date = new Date();
 
-function test(){
 
-
-}
-
-test();
 
 dateQuery.value = `2021-${getCurrentDate()}`;
 
