@@ -5,13 +5,17 @@ var loader = document.getElementById("loader");
 var dateQuery = document.getElementById("date");
 var searchBtn = document.getElementById("search-btn");
 var newSelect = document.getElementById("countrySelect");
+core.style.visibility = 'hidden';
+loader.style.display = 'none';
+var date = new Date();
+
+function test() {}
+
+test();
 dateQuery.value = "2021-".concat(getCurrentDate());
 searchBtn.addEventListener('click', function () {
   fetchData();
 });
-core.style.visibility = 'hidden';
-loader.style.display = 'none';
-var date = new Date();
 
 function getCurrentDate() {
   var currentDate = new Date();
@@ -118,13 +122,13 @@ function fillCountriesSelect() {
           for (element in countries) {
             opt = document.createElement("option");
             opt.value = countries[element].iso;
-            opt.innerHTML = countries[element].name; // whatever property it has
-            // then append it to the select element
-
+            opt.innerHTML = countries[element].name;
             newSelect.appendChild(opt);
           }
 
-        case 5:
+          fillProvinceSelect(newSelect.value);
+
+        case 6:
         case "end":
           return _context4.stop();
       }
@@ -184,7 +188,6 @@ function fetchData() {
 
         case 2:
           record = _context6.sent;
-          fillProvinceSelect("CHN");
           toggledisplay(loader);
 
           if (record != null) {
@@ -205,7 +208,7 @@ function fetchData() {
             fillElementByRequest("fatality_rate", data, "fatality_rate");
           }
 
-        case 6:
+        case 5:
         case "end":
           return _context6.stop();
       }

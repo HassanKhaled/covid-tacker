@@ -3,9 +3,19 @@
 const core = document.getElementById("main");
 let loader = document.getElementById("loader");
 let dateQuery = document.getElementById("date");
-
 const searchBtn = document.getElementById("search-btn");
 let newSelect = document.getElementById("countrySelect");
+core.style.visibility = 'hidden';
+loader.style.display = 'none';
+
+const date = new Date();
+
+function test(){
+
+
+}
+
+test();
 
 dateQuery.value = `2021-${getCurrentDate()}`;
 
@@ -15,11 +25,7 @@ searchBtn.addEventListener('click',function(){
     fetchData();
 })
 
-core.style.visibility = 'hidden';
-loader.style.display = 'none';
 
-
-const date = new Date();
 
 function getCurrentDate() {
 
@@ -71,12 +77,13 @@ async function fillCountriesSelect(){
         var opt = document.createElement("option");
 
         opt.value = countries[element].iso;
-        opt.innerHTML = countries[element].name; // whatever property it has
-
-        // then append it to the select element
+        opt.innerHTML = countries[element].name; 
         newSelect.appendChild(opt);
 
     }
+
+  fillProvinceSelect(newSelect.value);
+
 }
 
 
@@ -118,7 +125,7 @@ async function fetchData() {
 
   const record = await getCountryStatics(newSelect.value);
 
-  fillProvinceSelect("CHN");
+  
   toggledisplay(loader);
 
   if (record != null) {
