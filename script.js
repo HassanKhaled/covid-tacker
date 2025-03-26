@@ -34,11 +34,7 @@ function getCurrentDate() {
 }
 
 async function getProvincesByCountryIso(iso){
-/*
-  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}`);
-  const record = await res.json();
 
-  return record;*/
   let results = await fetch(`https://covid-api.com/api/provinces?iso=${iso}`);
   const record = await results.json();
   return record.data;
