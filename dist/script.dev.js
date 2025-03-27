@@ -4,7 +4,8 @@ var core = document.getElementById("main");
 var loader = document.getElementById("loader");
 var dateQuery = document.getElementById("date");
 var searchBtn = document.getElementById("search-btn");
-var newSelect = document.getElementById("countrySelect");
+var countrySelect = document.getElementById("countrySelect");
+var provinceSelect = document.getElementById("provinceSelect");
 core.style.visibility = 'hidden';
 loader.style.display = 'none';
 var date = new Date();
@@ -50,25 +51,49 @@ function getProvincesByCountryIso(iso) {
   });
 }
 
-function getCountryStatics(iso) {
+function getCountryStatics(iso, province) {
   var res, record;
   return regeneratorRuntime.async(function getCountryStatics$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.next = 2;
+          res = null;
+          record = null;
+
+          if (!(province == "")) {
+            _context2.next = 11;
+            break;
+          }
+
+          _context2.next = 5;
           return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=".concat(dateQuery.value, "&iso=").concat(iso)));
 
-        case 2:
+        case 5:
           res = _context2.sent;
-          _context2.next = 5;
+          _context2.next = 8;
           return regeneratorRuntime.awrap(res.json());
 
-        case 5:
+        case 8:
           record = _context2.sent;
+          _context2.next = 17;
+          break;
+
+        case 11:
+          _context2.next = 13;
+          return regeneratorRuntime.awrap(fetch("https://covid-api.com/api/reports?date=".concat(dateQuery.value, "&iso=").concat(iso, "&region_province=").concat(province)));
+
+        case 13:
+          res = _context2.sent;
+          _context2.next = 16;
+          return regeneratorRuntime.awrap(res.json());
+
+        case 16:
+          record = _context2.sent;
+
+        case 17:
           return _context2.abrupt("return", record);
 
-        case 7:
+        case 18:
         case "end":
           return _context2.stop();
       }
@@ -113,18 +138,17 @@ function fillCountriesSelect() {
 
         case 2:
           countries = _context4.sent;
-          newSelect = document.getElementById("countrySelect");
 
           for (element in countries) {
             opt = document.createElement("option");
             opt.value = countries[element].iso;
             opt.innerHTML = countries[element].name;
-            newSelect.appendChild(opt);
+            countrySelect.appendChild(opt);
           }
 
-          fillProvinceSelect(newSelect.value);
+          fillProvinceSelect(countrySelect.value);
 
-        case 6:
+        case 5:
         case "end":
           return _context4.stop();
       }
@@ -143,19 +167,23 @@ function fillProvinceSelect(iso) {
 
         case 2:
           provinces = _context5.sent;
-          newSelect = document.getElementById("provinceSelect");
-          console.log(provinces);
 
-          for (element in provinces) {
-            opt = document.createElement("option");
-            opt.value = provinces[element].iso;
-            opt.innerHTML = provinces[element].province; // whatever property it has
-            // then append it to the select element
+          if (provinces.length != 0) {
+            provinceSelect.style.disabled = false;
 
-            newSelect.appendChild(opt);
+            for (element in provinces) {
+              opt = document.createElement("option");
+              opt.value = provinces[element].province;
+              opt.innerHTML = provinces[element].province; // whatever property it has
+              // then append it to the select element
+
+              provinceSelect.appendChild(opt);
+            }
+          } else {
+            provinceSelect.style.disabled = true;
           }
 
-        case 6:
+        case 4:
         case "end":
           return _context5.stop();
       }
@@ -180,7 +208,7 @@ function fetchData() {
       switch (_context6.prev = _context6.next) {
         case 0:
           _context6.next = 2;
-          return regeneratorRuntime.awrap(getCountryStatics(newSelect.value));
+          return regeneratorRuntime.awrap(getCountryStatics(countrySelect.value, provinceSelect.value));
 
         case 2:
           record = _context6.sent;

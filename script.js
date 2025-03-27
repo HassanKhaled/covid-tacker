@@ -47,7 +47,7 @@ async function getProvincesByCountryIso(iso){
 async function getCountryStatics(iso , province){
 let res = null;
 let record = null
- alert(province);
+
   if (province == "") {
   res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}`);
   record = await res.json();
@@ -55,7 +55,8 @@ let record = null
   res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}&region_province=${province}`);
   record = await res.json();
   }
-console.log(record);
+
+
  return record ;
 }
 
@@ -92,6 +93,10 @@ async function fillProvinceSelect(iso) {
 
   let provinces = await getProvincesByCountryIso(iso);
  
+  if (provinces.length!=0){
+
+    provinceSelect.style.disabled = false;
+
   for (element in provinces) {
 
     var opt = document.createElement("option");
@@ -103,6 +108,10 @@ async function fillProvinceSelect(iso) {
     provinceSelect.appendChild(opt);
 
   }
+}else{
+
+  provinceSelect.style.disabled = true;
+}
 }
 
 
