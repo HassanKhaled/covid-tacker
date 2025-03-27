@@ -4,7 +4,11 @@ const core = document.getElementById("main");
 let loader = document.getElementById("loader");
 let dateQuery = document.getElementById("date");
 const searchBtn = document.getElementById("search-btn");
-let newSelect = document.getElementById("countrySelect");
+
+let countrySelect = document.getElementById("countrySelect");
+let provinceSelect = document.getElementById("provinceSelect");
+
+
 core.style.visibility = 'hidden';
 loader.style.display = 'none';
 
@@ -40,11 +44,18 @@ async function getProvincesByCountryIso(iso){
   return record.data;
 }
 
-async function getCountryStatics(iso){
-
-  const res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}`);
- const record = await res.json();
-
+async function getCountryStatics(iso , province){
+let res = null;
+let record = null
+ alert(province);
+  if (province == "") {
+  res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}`);
+  record = await res.json();
+  }else{
+  res = await fetch(`https://covid-api.com/api/reports?date=${dateQuery.value}&iso=${iso}&region_province=${province}`);
+  record = await res.json();
+  }
+console.log(record);
  return record ;
 }
 
@@ -60,7 +71,6 @@ return countries.data;
 async function fillCountriesSelect(){
 
     let countries = await getCountries();
-    newSelect = document.getElementById("countrySelect");
 
 
     for (element in countries) {
@@ -69,11 +79,11 @@ async function fillCountriesSelect(){
 
         opt.value = countries[element].iso;
         opt.innerHTML = countries[element].name; 
-        newSelect.appendChild(opt);
+        countrySelect.appendChild(opt);
 
     }
 
-  fillProvinceSelect(newSelect.value);
+ fillProvinceSelect(countrySelect.value);
 
 }
 
@@ -81,18 +91,16 @@ async function fillCountriesSelect(){
 async function fillProvinceSelect(iso) {
 
   let provinces = await getProvincesByCountryIso(iso);
-  newSelect = document.getElementById("provinceSelect");
-
-console.log(provinces);
+ 
   for (element in provinces) {
 
     var opt = document.createElement("option");
 
-    opt.value = provinces[element].iso;
+    opt.value = provinces[element].province;
     opt.innerHTML = provinces[element].province; // whatever property it has
 
     // then append it to the select element
-    newSelect.appendChild(opt);
+    provinceSelect.appendChild(opt);
 
   }
 }
@@ -114,7 +122,7 @@ function toggledisplay(elem){
 async function fetchData() {
    
 
-  const record = await getCountryStatics(newSelect.value);
+  const record = await getCountryStatics(countrySelect.value,provinceSelect.value);
 
   
   toggledisplay(loader);
