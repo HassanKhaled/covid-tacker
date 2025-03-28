@@ -99,8 +99,8 @@ async function fillProvinceSelect(iso) {
   let provinces = await getProvincesByCountryIso(iso);
  
   if (provinces.length!=0){
-
-    provinceSelect.style.disabled = false;
+    provinceSelect.style.pointerEvents = 'auto';
+   // provinceSelect.style.disabled = false;
 
   for (element in provinces) {
 
@@ -114,9 +114,11 @@ async function fillProvinceSelect(iso) {
 
   }
 }else{
-
-  provinceSelect.style.disabled = true;
+    provinceSelect.style.pointerEvents = 'none';
+  //provinceSelect.style.disabled = true;
 }
+ 
+  provinceSelect.selectedIndex = 0;
 }
 
 

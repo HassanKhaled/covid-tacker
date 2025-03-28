@@ -173,7 +173,7 @@ function fillProvinceSelect(iso) {
           provinces = _context5.sent;
 
           if (provinces.length != 0) {
-            provinceSelect.style.disabled = false;
+            provinceSelect.style.pointerEvents = 'auto'; // provinceSelect.style.disabled = false;
 
             for (element in provinces) {
               opt = document.createElement("option");
@@ -184,10 +184,12 @@ function fillProvinceSelect(iso) {
               provinceSelect.appendChild(opt);
             }
           } else {
-            provinceSelect.style.disabled = true;
+            provinceSelect.style.pointerEvents = 'none'; //provinceSelect.style.disabled = true;
           }
 
-        case 4:
+          provinceSelect.selectedIndex = 0;
+
+        case 5:
         case "end":
           return _context5.stop();
       }
