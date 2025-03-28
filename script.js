@@ -100,7 +100,7 @@ async function fillProvinceSelect(iso) {
  
   if (provinces.length!=0){
     provinceSelect.style.pointerEvents = 'auto';
-   // provinceSelect.style.disabled = false;
+  
 
   for (element in provinces) {
 
@@ -115,7 +115,7 @@ async function fillProvinceSelect(iso) {
   }
 }else{
     provinceSelect.style.pointerEvents = 'none';
-  //provinceSelect.style.disabled = true;
+ 
 }
  
   provinceSelect.selectedIndex = 0;
