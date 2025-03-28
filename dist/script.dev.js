@@ -177,11 +177,15 @@ function fillProvinceSelect(iso) {
 
             for (element in provinces) {
               opt = document.createElement("option");
-              opt.value = provinces[element].province;
-              opt.innerHTML = provinces[element].province; // whatever property it has
-              // then append it to the select element
 
-              provinceSelect.appendChild(opt);
+              if (provinces[element].province != null && provinces[element].province != "") {
+                console.log("element = ".concat(provinces[element].province));
+                opt.value = provinces[element].province;
+                opt.innerHTML = provinces[element].province; // whatever property it has
+                // then append it to the select element
+
+                provinceSelect.appendChild(opt);
+              }
             }
           } else {
             provinceSelect.style.pointerEvents = 'none';
