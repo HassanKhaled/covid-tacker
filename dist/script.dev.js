@@ -13,6 +13,10 @@ dateQuery.value = "2021-".concat(getCurrentDate());
 searchBtn.addEventListener('click', function () {
   fetchData();
 });
+countrySelect.addEventListener('change', function () {
+  provinceSelect.innerHTML = "";
+  fillProvinceSelect(countrySelect.value);
+});
 
 function getCurrentDate() {
   var currentDate = new Date();

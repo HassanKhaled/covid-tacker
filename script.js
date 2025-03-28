@@ -24,7 +24,12 @@ searchBtn.addEventListener('click',function(){
     fetchData();
 })
 
+countrySelect.addEventListener('change', function(){
+  provinceSelect.innerHTML = "";
 
+  fillProvinceSelect(countrySelect.value);
+
+});
 
 function getCurrentDate() {
 
@@ -84,7 +89,7 @@ async function fillCountriesSelect(){
 
     }
 
- fillProvinceSelect(countrySelect.value);
+  fillProvinceSelect(countrySelect.value);
 
 }
 
@@ -144,9 +149,9 @@ async function fetchData() {
       
 
         const data = record.data[0];
-       
+      
 
-        document.getElementById("country").innerHTML = data["region"].name;
+      document.getElementById("country").innerHTML = data["region"].name;
 
       dateQuery.value = data["date"];
 
