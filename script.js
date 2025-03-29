@@ -140,15 +140,17 @@ function toggledisplay(elem){
 
 async function fetchData() {
    
-
   const record = await getCountryStatics(countrySelect.value,provinceSelect.value);
-
+  alert(record.data.length);
+  console.log(countrySelect.value);
+  console.log(provinceSelect.value);
   
+
   toggledisplay(loader);
 
-  if (record != null) {
+  if (record.data.length!=0) {
 
-     core.style.visibility = 'visible';
+    core.style.visibility = 'visible';
     toggledisplay(loader);
 
       

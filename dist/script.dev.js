@@ -222,9 +222,12 @@ function fetchData() {
 
         case 2:
           record = _context6.sent;
+          alert(record.data.length);
+          console.log(countrySelect.value);
+          console.log(provinceSelect.value);
           toggledisplay(loader);
 
-          if (record != null) {
+          if (record.data.length != 0) {
             core.style.visibility = 'visible';
             toggledisplay(loader);
             data = record.data[0];
@@ -242,7 +245,7 @@ function fetchData() {
             fillElementByRequest("fatality_rate", data, "fatality_rate");
           }
 
-        case 5:
+        case 8:
         case "end":
           return _context6.stop();
       }
