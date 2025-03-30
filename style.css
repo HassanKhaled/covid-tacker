@@ -29,11 +29,12 @@
     
     html {
         width: var(--width-4) ;  /* max: 800px */
-        height: var(--height-6) ; /* max: 600px */
+        height: var(--height-4) ; /* max: 600px */
       }
       
       body {
         margin: 10px;
+        background-color:#FFFFF0;
       }
       
      .form-control{
