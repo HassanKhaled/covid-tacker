@@ -7,6 +7,8 @@ const searchBtn = document.getElementById("search-btn");
 
 let countrySelect = document.getElementById("countrySelect");
 let provinceSelect = document.getElementById("provinceSelect");
+let flagImage = document.getElementById("flag");
+
 
 
 core.style.visibility = 'hidden';
@@ -14,7 +16,16 @@ loader.style.display = 'none';
 
 const date = new Date();
 
+function flagByIso(iso){
 
+  flagImage.src = `https://flagsapi.com/${iso}/flat/64.png`;
+}
+
+function fromAlpha3toApha2(iso){
+
+  return iso.substring(0, 2).toUpperCase();
+
+}
 
 dateQuery.value = `2021-${getCurrentDate()}`;
 
@@ -141,10 +152,11 @@ function toggledisplay(elem){
 async function fetchData() {
    
   const record = await getCountryStatics(countrySelect.value,provinceSelect.value);
-  alert(countrySelect.value.substring(0, 2).toLowerCase());
+
   toggledisplay(loader);
 
   if (record.data.length!=0) {
+   
 
     core.style.visibility = 'visible';
     toggledisplay(loader);
@@ -152,9 +164,13 @@ async function fetchData() {
       
 
         const data = record.data[0];
-      
+    let country = data["region"].name;
 
-      document.getElementById("country").innerHTML = data["region"].name;
+    document.getElementById("country").innerHTML = country;
+   
+
+
+    flagByIso(fromAlpha3toApha2(country));
 
       dateQuery.value = data["date"];
 

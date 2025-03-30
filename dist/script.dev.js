@@ -6,9 +6,19 @@ var dateQuery = document.getElementById("date");
 var searchBtn = document.getElementById("search-btn");
 var countrySelect = document.getElementById("countrySelect");
 var provinceSelect = document.getElementById("provinceSelect");
+var flagImage = document.getElementById("flag");
 core.style.visibility = 'hidden';
 loader.style.display = 'none';
 var date = new Date();
+
+function flagByIso(iso) {
+  flagImage.src = "https://flagsapi.com/".concat(iso, "/flat/64.png");
+}
+
+function fromAlpha3toApha2(iso) {
+  return iso.substring(0, 2).toUpperCase();
+}
+
 dateQuery.value = "2021-".concat(getCurrentDate());
 searchBtn.addEventListener('click', function () {
   fetchData();
@@ -212,7 +222,7 @@ function toggledisplay(elem) {
 }
 
 function fetchData() {
-  var record, data;
+  var record, data, country;
   return regeneratorRuntime.async(function fetchData$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
@@ -222,14 +232,15 @@ function fetchData() {
 
         case 2:
           record = _context6.sent;
-          alert(countrySelect.value.substring(0, 2).toLowerCase());
           toggledisplay(loader);
 
           if (record.data.length != 0) {
             core.style.visibility = 'visible';
             toggledisplay(loader);
             data = record.data[0];
-            document.getElementById("country").innerHTML = data["region"].name;
+            country = data["region"].name;
+            document.getElementById("country").innerHTML = country;
+            flagByIso(fromAlpha3toApha2(country));
             dateQuery.value = data["date"];
             document.title = "Covid-19 Stats- ".concat(data["region"].name);
             fillElementByRequest("active", data, "active");
@@ -243,7 +254,7 @@ function fetchData() {
             fillElementByRequest("fatality_rate", data, "fatality_rate");
           }
 
-        case 6:
+        case 5:
         case "end":
           return _context6.stop();
       }
