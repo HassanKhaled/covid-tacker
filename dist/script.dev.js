@@ -25,6 +25,7 @@ searchBtn.addEventListener('click', function () {
 });
 countrySelect.addEventListener('change', function () {
   provinceSelect.innerHTML = "";
+  flagByIso(fromAlpha3toApha2(countrySelect.value));
   fillProvinceSelect(countrySelect.value);
 });
 
@@ -240,7 +241,6 @@ function fetchData() {
             data = record.data[0];
             country = data["region"].name;
             document.getElementById("country").innerHTML = country;
-            flagByIso(fromAlpha3toApha2(country));
             dateQuery.value = data["date"];
             document.title = "Covid-19 Stats- ".concat(data["region"].name);
             fillElementByRequest("active", data, "active");
