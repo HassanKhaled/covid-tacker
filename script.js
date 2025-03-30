@@ -18,7 +18,7 @@ const date = new Date();
 
 function flagByIso(iso){
 
-  flagImage.src = `https://flagsapi.com/${iso}/flat/64.png`;
+  flagImage.src = `https://flagsapi.com/${iso}/shiny/64.png`;
 }
 
 function fromAlpha3toApha2(iso){

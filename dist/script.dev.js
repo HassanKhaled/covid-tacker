@@ -12,7 +12,7 @@ loader.style.display = 'none';
 var date = new Date();
 
 function flagByIso(iso) {
-  flagImage.src = "https://flagsapi.com/".concat(iso, "/flat/64.png");
+  flagImage.src = "https://flagsapi.com/".concat(iso, "/shiny/64.png");
 }
 
 function fromAlpha3toApha2(iso) {
