@@ -101,15 +101,15 @@ async function fillCountriesSelect(){
     }
 
   fillProvinceSelect(countrySelect.value);
-flagByIso(fromAlpha3toApha2(countrySelect.value));
+  flagByIso(fromAlpha3toApha2(countrySelect.value));
 }
 
-
+// AND , AGO , ATG , ARM , ABW , AUT , BHS , BGD , BRB
 async function fillProvinceSelect(iso) {
 
   let provinces = await getProvincesByCountryIso(iso);
  
-  if (provinces.length!=0){
+  if (provinces.length>=2){
     provinceSelect.style.pointerEvents = 'auto';
   
 

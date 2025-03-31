@@ -170,7 +170,8 @@ function fillCountriesSelect() {
       }
     }
   });
-}
+} // AND , AGO , ATG , ARM , ABW , AUT , BHS , BGD , BRB
+
 
 function fillProvinceSelect(iso) {
   var provinces, opt;
@@ -184,7 +185,7 @@ function fillProvinceSelect(iso) {
         case 2:
           provinces = _context5.sent;
 
-          if (provinces.length != 0) {
+          if (provinces.length >= 2) {
             provinceSelect.style.pointerEvents = 'auto';
 
             for (element in provinces) {
