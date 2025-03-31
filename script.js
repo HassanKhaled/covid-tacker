@@ -101,7 +101,7 @@ async function fillCountriesSelect(){
     }
 
   fillProvinceSelect(countrySelect.value);
-
+flagByIso(fromAlpha3toApha2(countrySelect.value));
 }
 
 

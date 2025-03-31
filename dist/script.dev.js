@@ -162,8 +162,9 @@ function fillCountriesSelect() {
           }
 
           fillProvinceSelect(countrySelect.value);
+          flagByIso(fromAlpha3toApha2(countrySelect.value));
 
-        case 5:
+        case 6:
         case "end":
           return _context4.stop();
       }
