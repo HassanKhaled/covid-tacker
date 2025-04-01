@@ -37,6 +37,8 @@ searchBtn.addEventListener('click',function(){
 
 countrySelect.addEventListener('change', function(){
   provinceSelect.innerHTML = "";
+ // document.getElementById("country").innerHTML = countrySelect.text;
+  document.getElementById("country").innerHTML  = countrySelect.options[countrySelect.selectedIndex].text;
   flagByIso(fromAlpha3toApha2(countrySelect.value));
   fillProvinceSelect(countrySelect.value);
 
@@ -117,7 +119,7 @@ async function fillProvinceSelect(iso) {
 
     var opt = document.createElement("option");
 
-    if (provinces[element].province != null && provinces[element].province!=""){
+    if ( provinces[element].province!=""){
       console.log(`element = ${provinces[element].province}`);
     opt.value = provinces[element].province;
     opt.innerHTML = provinces[element].province; // whatever property it has
@@ -194,5 +196,3 @@ async function fetchData() {
 
 }
 
-
-//
