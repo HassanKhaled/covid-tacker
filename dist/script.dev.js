@@ -262,4 +262,4 @@ function fetchData() {
       }
     }
   });
-}
+} //https://developer.chrome.com/docs/extensions/how-to/web-platform/geolocation
