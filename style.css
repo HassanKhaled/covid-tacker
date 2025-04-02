@@ -30,8 +30,10 @@
       }
       
       body {
+        background-image: url("images/background.png");
         margin: 10px;
-        background-color:#FFFFF0;
+    
+   
       }
       
      .form-control{
