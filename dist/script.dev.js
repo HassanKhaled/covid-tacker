@@ -24,7 +24,9 @@ searchBtn.addEventListener('click', function () {
   fetchData();
 });
 countrySelect.addEventListener('change', function () {
-  provinceSelect.innerHTML = "";
+  provinceSelect.innerHTML = ""; // document.getElementById("country").innerHTML = countrySelect.text;
+
+  document.getElementById("country").innerHTML = countrySelect.options[countrySelect.selectedIndex].text;
   flagByIso(fromAlpha3toApha2(countrySelect.value));
   fillProvinceSelect(countrySelect.value);
 });
@@ -191,7 +193,7 @@ function fillProvinceSelect(iso) {
             for (element in provinces) {
               opt = document.createElement("option");
 
-              if (provinces[element].province != null && provinces[element].province != "") {
+              if (provinces[element].province != "") {
                 console.log("element = ".concat(provinces[element].province));
                 opt.value = provinces[element].province;
                 opt.innerHTML = provinces[element].province; // whatever property it has
@@ -262,4 +264,4 @@ function fetchData() {
       }
     }
   });
-} //https://developer.chrome.com/docs/extensions/how-to/web-platform/geolocation
+}

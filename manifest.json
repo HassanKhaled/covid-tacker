@@ -13,12 +13,7 @@
     "48": "images/_48.png",
     "128": "images/_128.png"
   },
-  "content_scripts": [
-    {
-      "js": ["scripts/content.js"],
-      "matches": ["https://*/*"]
-    }
-  ],
+  
   "action": {
     "default_popup": "popup.html",
     "default_title": "Latest Covid Report"
