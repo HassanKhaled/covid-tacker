@@ -15,10 +15,12 @@
 
 
   </head>
-  <body >
+
+<body>
+<div id="query" style="display:hidden;">
+
 <img id="flag"  class="rounded mx-auto d-block " src="">
-<h2 class="text-center">Covid Latest <span id="country"> </span> 
-</h2>
+<h2 class="text-center">Covid Latest <span id="country"> </span></h2>
 
 <div class="input-group mb-2">
   <span class="input-group-text round " id="basic-addon1">Country</span>
@@ -32,22 +34,21 @@
   <button class="btn btn-info round" aria-label="search" type="button" id="search-btn"><i class="bi bi-search"></i></button>
 </div>
 
-<div class=" input-group mb-2">
-
-
-
-</div>
-
  <div class="input-group mb-2 ">
       <span class="input-group-text round " id="basic-addon1">Date</span>
       <input type="date" id="date" class="form-control round" placeholder="Date" aria-label="Date" >
       </div>
       <hr>
+</div>  
+
+
+
+
       
 
       <div class="loader" id="loader"></div>
 
-    <form id="main" >
+<form id="main" >
 
       <div class="input-group mb-2">
       <span class="input-group-text round " id="basic-addon1">Fatality Rate</span>

@@ -1,5 +1,5 @@
 
-
+const search = document.getElementById("query");
 const core = document.getElementById("main");
 let loader = document.getElementById("loader");
 let dateQuery = document.getElementById("date");
@@ -12,6 +12,7 @@ let flagImage = document.getElementById("flag");
 
 
 core.style.visibility = 'hidden';
+search.style.visibility = 'hidden';
 loader.style.display = 'none';
 
 const date = new Date();

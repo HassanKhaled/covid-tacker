@@ -1,5 +1,6 @@
 "use strict";
 
+var search = document.getElementById("query");
 var core = document.getElementById("main");
 var loader = document.getElementById("loader");
 var dateQuery = document.getElementById("date");
@@ -8,6 +9,7 @@ var countrySelect = document.getElementById("countrySelect");
 var provinceSelect = document.getElementById("provinceSelect");
 var flagImage = document.getElementById("flag");
 core.style.visibility = 'hidden';
+search.style.visibility = 'hidden';
 loader.style.display = 'none';
 var date = new Date();
 
