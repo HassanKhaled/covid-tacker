@@ -15,11 +15,63 @@ core.style.visibility = 'hidden';
 search.style.visibility = 'hidden';
 loader.style.display = 'block';
 
+
+async function loadering(){
+
+  setTimeout(() => {
+
+    core.style.visibility = 'visible';
+    loader.style.display = 'none';
+
+  }, 500);
+
+
+  const record = await getCountryStatics(countrySelect.value, provinceSelect.value);
+
+  toggledisplay(loader);
+
+  if (record.data.length != 0) {
+
+    core.style.visibility = 'visible';
+    toggledisplay(loader);
+
+    const data = record.data[0];
+    let country = data["region"].name;
+
+    document.getElementById("country").innerHTML = country;
+
+
+    dateQuery.value = data["date"];
+
+    document.title = `Covid-19 Stats- ${data["region"].name}`;
+
+    fillElementByRequest("active", data, "active");
+
+    fillElementByRequest("active_diff", data, "active_diff");
+
+    fillElementByRequest("death", data, "deaths");
+
+    fillElementByRequest("death_diff", data, "deaths_diff");
+
+    fillElementByRequest("confirmed", data, "confirmed");
+
+    fillElementByRequest("confirmed_diff", data, "confirmed_diff");
+
+    fillElementByRequest("recovered", data, "recovered");
+
+    fillElementByRequest("recovered_diff", data, "recovered_diff");
+
+    fillElementByRequest("fatality_rate", data, "fatality_rate");
+  }
+
+
+}
+
 setTimeout(()=>{
 
   search.style.visibility = 'visible';
   loader.style.display = 'none';
-  
+
 }, 1000);
 
 const date = new Date();
@@ -160,47 +212,10 @@ function toggledisplay(elem){
 }
 
 async function fetchData() {
-   
-  const record = await getCountryStatics(countrySelect.value,provinceSelect.value);
 
-  toggledisplay(loader);
-
-  if (record.data.length!=0) {
-   
-
-    core.style.visibility = 'visible';
-    toggledisplay(loader);
-
-      
-
-        const data = record.data[0];
-    let country = data["region"].name;
-
-    document.getElementById("country").innerHTML = country;
-   
-
-      dateQuery.value = data["date"];
-
-      document.title = `Covid-19 Stats- ${data["region"].name}`;
-
-        fillElementByRequest("active",data,"active");
-    
-        fillElementByRequest("active_diff", data, "active_diff");
-      
-        fillElementByRequest("death", data, "deaths");
-      
-        fillElementByRequest("death_diff", data, "deaths_diff");
-       
-        fillElementByRequest("confirmed", data, "confirmed");
+  core.style.visibility = 'hidden';
+  loader.style.display = 'block';
+  await loadering();
   
-        fillElementByRequest("confirmed_diff", data, "confirmed_diff");
- 
-        fillElementByRequest("recovered", data, "recovered");
-
-        fillElementByRequest("recovered_diff", data, "recovered_diff");
-        
-        fillElementByRequest("fatality_rate", data, "fatality_rate");
-    }
-
 }
 
