@@ -10,7 +10,11 @@ var provinceSelect = document.getElementById("provinceSelect");
 var flagImage = document.getElementById("flag");
 core.style.visibility = 'hidden';
 search.style.visibility = 'hidden';
-loader.style.display = 'none';
+loader.style.display = 'block';
+setTimeout(function () {
+  search.style.visibility = 'visible';
+  loader.style.display = 'none';
+}, 1000);
 var date = new Date();
 
 function flagByIso(iso) {

@@ -13,7 +13,14 @@ let flagImage = document.getElementById("flag");
 
 core.style.visibility = 'hidden';
 search.style.visibility = 'hidden';
-loader.style.display = 'none';
+loader.style.display = 'block';
+
+setTimeout(()=>{
+
+  search.style.visibility = 'visible';
+  loader.style.display = 'none';
+  
+}, 1000);
 
 const date = new Date();
 
